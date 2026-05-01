@@ -1,0 +1,7 @@
+REDIS_HOST = "127.0.0.1"
+REDIS_PORT = 6379
+REDIS_DB = 0
+
+SECRET_KEY = "douyin_secret"
+
+TOKEN_EXPIRE = 60 * 60 * 24 * 7
