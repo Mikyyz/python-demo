@@ -24,6 +24,10 @@ def create_user(db: Session, user: UserCreate):
       # 密码加密
       password_hash = generate_password_hash(user.password)
 
+      # 如果没有用户名,就使用手机号拼接生成一个
+      if not user.username:
+          user.username = f"user_{user.phone}"  # 更安全一点
+
       db_user = User(
           phone=user.phone,
           username=user.username,

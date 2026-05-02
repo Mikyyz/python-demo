@@ -7,7 +7,7 @@ from app.core.deps import get_db
 from app.core.response_model import ResponseModel
 from app.core.helper import success, error
 
-router = APIRouter()
+router = APIRouter(prefix="/user", tags=["user"])
 
 # 获取用户列表
 @router.get('/', response_model=ResponseModel[list[UserSchema]])
@@ -27,7 +27,7 @@ def get_user(user_id: str = Path(..., min_length=5, max_length=8), db: Session =
     return success(user)
 
 # 创建用户
-@router.post('/', response_model=ResponseModel[UserSchema])
+@router.post('/create', response_model=ResponseModel[UserSchema])
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     user = service_create_user(db, user)
     return success(user)

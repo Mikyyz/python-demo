@@ -7,7 +7,7 @@ from app.core.response_model import ResponseModel
 from app.core.deps import get_db
 from app.core.helper import success
 
-router = APIRouter()
+router = APIRouter(prefix="/auth", tags=["auth"])
 
 @router.post('/login', response_model=ResponseModel[LoginResponse])
 def user_login(payload: LoginDTO, db: Session = Depends(get_db)):

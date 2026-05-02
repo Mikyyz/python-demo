@@ -1,13 +1,13 @@
 # 生成token & 解析token
 import jwt
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from app.config.settings import SECRET_KEY
 
 # 生成token
 def generate_token(user_id):
   payload = {
     "user_id": user_id,
-    "exp": datetime.now(timezone.utc) + datetime.timedelta(days=7),
+    "exp": datetime.now(timezone.utc) + timedelta(days=7),
   }
   token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
   return token

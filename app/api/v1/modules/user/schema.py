@@ -1,8 +1,7 @@
 from pydantic import BaseModel, Field
-from app.core.orm_base import ORMBase
 
 
-class UserSchema(ORMBase):
+class UserSchema(BaseModel):
   phone: str = Field(..., min_length=11, max_length=11)
   username: str | None = None
 
